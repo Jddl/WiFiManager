@@ -2434,10 +2434,7 @@ boolean WiFiManager::captivePortal() {
 
   // fallback for ipv6 bug
   if(serverLoc == "0.0.0.0"){
-    if ((WiFi.status()) != WL_CONNECTED)
-      serverLoc = toStringIp(WiFi.softAPIP());
-    else
-      serverLoc = toStringIp(WiFi.localIP());
+    serverLoc = toStringIp(WiFi.softAPIP());
   }
   
   if(_httpPort != 80) serverLoc += ":" + (String)_httpPort; // add port if not default
